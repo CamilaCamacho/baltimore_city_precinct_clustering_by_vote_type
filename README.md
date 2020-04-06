@@ -1,5 +1,5 @@
-# Maryland Election Cluster Analysis
 * A repository name that is descriptive of the analysis conducted
+# Maryland Election Cluster Analysis
 Exploring [Maryland's Official Turnout Statistics for the 2016 General Election](https://elections.maryland.gov/elections/2016/index.html) in Maryland by Party and Precinct.
 
 Original dataset used can be found [here](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Official%20by%20Party%20and%20Precinct.csv).
@@ -7,6 +7,8 @@ Original dataset used can be found [here](https://github.com/CamilaCamacho/balti
 ## Business Question 
 Define an initial business question
 Define the data-related questions and metrics
+
+### Maryland Election Data: How are Maryland voting precincts grouped based on how they vote (polls, early voting, absentee, provisional)? 
 
 ### Baltimore City Election Data: How are Baltimore City voting precincts grouped based on voter turnout, number of Democrat/Republican votes, or other related metrics?
 
