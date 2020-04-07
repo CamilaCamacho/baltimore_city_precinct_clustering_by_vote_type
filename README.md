@@ -29,7 +29,7 @@ Use Excel Solver to perform a cluster analysis for an organization listed in the
 Create at least one visualization that shows the groupings based on your cluster analysis. This should show either the groupings in your cluster analysis (the list of data for each cluster) or the characteristics of the cluster nodes.
 
 --- 
-# Step-by-Step Instructions for Excel Data Analysis
+## Step-by-Step Instructions for Excel Data Analysis
 * Step-by-step instructions for Excel data analysis (either in README or as a separate document in the repository)
 
 0. As mentioned above, we will be using [Maryland's Official Turnout Statistics for the 2016 General Election by Party and Precinct](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Official%20by%20Party%20and%20Precinct.csv) dataset.
@@ -53,13 +53,26 @@ Create at least one visualization that shows the groupings based on your cluster
   * Create new rows for the standardized values for each data row called: _z-Polls_,	_z-Early Voting_,	_z-Absentee_,	_z-Provisional_, and	_z-Eligible Voters_. 
   * Use the formula `=STANDARDIZE((DATAcell),(DATAaverage),(DATAstdev))` for all columns of standardized data values. 
 3. Cluster Analysis
-* For simplicity, we will start with the first 4 precincts as the trial cluster anchors.
-  * Create _Cluster LBE Precinct #_ column with values: 1,2,3,4
+* For simplicity, we will start with the first 3 precincts as the trial cluster anchors.
+  * Create _Cluster LBE Precinct #_ column with values: 1,2,3
   * Use the following to identify the names of each LBE Precinct cluster center. 
   * Use `=VLOOKUP((ClusterLBEPrecinct#cell),*precinct_dataset*,2)` where 2 refers to the _LBE Precinct_ column because it's second.
   * Use `=VLOOKUP((ClusterLBEPrecinct#cell),*precinct_dataset*,(z-DATAcell))` to identify the standardized z-scores for each clustor center for each data column.
 * Now, compute the squared distance of each precinct to each clustor center.
-  * Use formula  `=SUMXMY2(CLUSTERzScoreRange,PRECINCTzScoreRange)`
-
-
-The number of people voting in polls, ev,... drives the clusters but because these numbers are dependant on total eligible voters in a county, we standardize each voting option. By working with these standardized values, we ensure that our analysis 
+  * Create new _SqDist from cluster #_ columns for each cluster
+  * Use formula  `=SUMXMY2(CLUSTERzScoreRange,PRECINCTzScoreRange)` for each _SqDist from cluster #_ column.
+* Compute distance from each precinct to the "closest" cluster anchor
+  * Create new _Min Distance_ column 
+  * Use formula `=MIN(PRECINCTSqDists)`
+  * Use formula `=SUM(MinDistances)` to compute the sum of squared distances of all precincts from their cluster anchor
+* Find clustor anchor for each precinct
+  * Create new column _Cluster Assigned_
+  * Use forumula `=MATCH((PRECINCTMinDist), (PRECINCTSqDists), 0)` to identify the clustor anchor with the smallest squared distance. 
+* Find optimal clustor anchors
+  * Go to the _Data_ tab and select the _Solver_ functionality.
+  * *Set Objective* should be the sum of squared distances which we want to be optimized to *Min* value.
+  * Select the _LBE Precinct #_ column range to be the *Changing Variable Cells*.
+  * *Subject to the Constraints*: (LBEPrecinct#range) <= (number of precincts (2,014)), (LBEPrecinct#range) >= 1, (LBEPrecinct#range) = integer.
+  * *Select a Solving Method* to be *Evolutionary*, select *Options* and in the *Evolutionary* tab make the *Mutation rate* 0.5 to improve performance. 
+  * Unselect *Make Unconstrained Variables Non-Negative*
+  * Press *Solve* and wait for *Sovler Results* pop-up. *Keep Solver Solutions* and press *Okay*.
