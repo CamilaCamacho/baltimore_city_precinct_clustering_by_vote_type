@@ -45,15 +45,18 @@ Create at least one visualization that shows the groupings based on your cluster
   * _Function_ should be *Sum* since we want the turnout data for each party to be added together. 
   * Select _Reference_ as the range containing the _LBE Precinct_ as the left-most column and containing the rest of the data to the right. 
   * Add this range as under *All references* and under *Use labels in* check *Left column*, then press *Okay*. 
-2. Preparing for Cluster Analysis:
 * Create _LBE Precinct #_ column at the very left that numbers all the precincts. 
+* Name this whole data range as *precinct_dataset*
+2. Preparing for Cluster Analysis:
 * Calculate `=Average()` and `=STDEV()` for each data row including Polls,	Early Voting,	Absentee,	Provisional, and	Eligible Voters. 
 * Since the number of eligible voters varies greatly between precincts, we standardize the data to be on the same scale in order for us to adequately compare it them to one another to cluster accordingly.
   * Create new rows for the standardized values for each data row.
   * Use the formula `=STANDARDIZE((DATAcell),(DATAaverage),(DATAstdev))` for all columns of standardized data values. 
 3. Cluster Analysis
-* For simplicity, we will start with the first 4 precincts as the cluster anchors.
-* Use 
+* For simplicity, we will start with the first 4 precincts as the trial cluster anchors.
+  * Create _Cluster LBE Precinct #_ column with values: 1,2,3,4
+  * Use the following to identify the names of each LBE Precinct cluster center. 
+  * //TODO
 
 
 The number of people voting in polls, ev,... drives the clusters but because these numbers are dependant on total eligible voters in a county, we standardize each voting option. By working with these standardized values, we ensure that our analysis 
