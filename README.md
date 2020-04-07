@@ -33,7 +33,7 @@ Create at least one visualization that shows the groupings based on your cluster
 * Step-by-step instructions for Excel data analysis (either in README or as a separate document in the repository)
 
 0. As mentioned above, we will be using [Maryland's Official Turnout Statistics for the 2016 General Election by Party and Precinct](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Official%20by%20Party%20and%20Precinct.csv) dataset.
-1. Clean Data
+1. Clean Data:
 * Delete _CONGRESSIONAL_DISTRICT_CODE_ and _LEGISLATIVE_DISTRICT_CODE_ columns because they are not necessary in our calculations. 
 * The _PRECINCT_ column contains an identifier for each precinct in a county, however, that identifier is non-unique between counties. To create a unique identifier for each precinct, we will combine the county name in the _LBE_ column and the precinct identifier in the _PRECINCT_ column. 
   * Create a new column after _PRECINCT_ column and before _PARTY_ column called _LBE Precinct_.
@@ -45,9 +45,15 @@ Create at least one visualization that shows the groupings based on your cluster
   * _Function_ should be *Sum* since we want the turnout data for each party to be added together. 
   * Select _Reference_ as the range containing the _LBE Precinct_ as the left-most column and containing the rest of the data to the right. 
   * Add this range as under *All references* and under *Use labels in* check *Left column*, then press *Okay*. 
-2. Cluster Analysis:
+2. Preparing for Cluster Analysis:
+* Create _LBE Precinct #_ column at the very left that numbers all the precincts. 
+* Calculate `=Average()` and `=STDEV()` for each data row including Polls,	Early Voting,	Absentee,	Provisional, and	Eligible Voters. 
+* Since the number of eligible voters varies greatly between precincts, we standardize the data to be on the same scale in order for us to adequately compare it them to one another to cluster accordingly.
+  * Create new rows for the standardized values for each data row.
+  * Use the formula `=STANDARDIZE((DATAcell),(DATAaverage),(DATAstdev))` for all columns of standardized data values. 
+3. Cluster Analysis
+* For simplicity, we will start with the first 4 precincts as the cluster anchors.
+* Use 
 
-
-Since the number of eligible voters varies greatly between counties, we standardize the data to be on the same scale in order for us to adequately compare it them to one another to cluster accordingly. 
 
 The number of people voting in polls, ev,... drives the clusters but because these numbers are dependant on total eligible voters in a county, we standardize each voting option. By working with these standardized values, we ensure that our analysis 
