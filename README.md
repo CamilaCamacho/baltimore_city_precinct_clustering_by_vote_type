@@ -48,15 +48,18 @@ Create at least one visualization that shows the groupings based on your cluster
 * Create _LBE Precinct #_ column at the very left that numbers all the precincts. 
 * Name this whole data range as *precinct_dataset*
 2. Preparing for Cluster Analysis:
-* Calculate `=Average()` and `=STDEV()` for each data row including Polls,	Early Voting,	Absentee,	Provisional, and	Eligible Voters. 
+* Calculate `=Average()` and `=STDEV()` for each data column including Polls,	Early Voting,	Absentee,	Provisional, and	Eligible Voters. 
 * Since the number of eligible voters varies greatly between precincts, we standardize the data to be on the same scale in order for us to adequately compare it them to one another to cluster accordingly.
-  * Create new rows for the standardized values for each data row.
+  * Create new rows for the standardized values for each data row called: _z-Polls_,	_z-Early Voting_,	_z-Absentee_,	_z-Provisional_, and	_z-Eligible Voters_. 
   * Use the formula `=STANDARDIZE((DATAcell),(DATAaverage),(DATAstdev))` for all columns of standardized data values. 
 3. Cluster Analysis
 * For simplicity, we will start with the first 4 precincts as the trial cluster anchors.
   * Create _Cluster LBE Precinct #_ column with values: 1,2,3,4
   * Use the following to identify the names of each LBE Precinct cluster center. 
-  * //TODO
+  * Use `=VLOOKUP((ClusterLBEPrecinct#cell),*precinct_dataset*,2)` where 2 refers to the _LBE Precinct_ column because it's second.
+  * Use `=VLOOKUP((ClusterLBEPrecinct#cell),*precinct_dataset*,(z-DATAcell))` to identify the standardized z-scores for each clustor center for each data column.
+* Now, compute the squared distance of each precinct to each clustor center.
+  * Use formula  `=SUMXMY2(CLUSTERzScoreRange,PRECINCTzScoreRange)`
 
 
 The number of people voting in polls, ev,... drives the clusters but because these numbers are dependant on total eligible voters in a county, we standardize each voting option. By working with these standardized values, we ensure that our analysis 
