@@ -17,7 +17,7 @@ Since the number of eligible voters varies greatly between precincts, the number
 ![Different kinds of Voting for Precinct](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Clustering%20Scatter%20Plot.png)
 
 ## Data Analysis & Interpretation
-
+Analyzed dataset can be found [here](https://github.com/CamilaCamacho/baltimore_city_precinct_clustering_by_vote_type/blob/master/MD%20Vote%20Method%20Clustering%20Analysis.xlsx).
 To group Baltimore City precincts based on how people at those precincts voted in the 2016 General Election, we run a clustering analysis on those precincts for the three main types of voting: Election Day Polls, Early Voting, and Absentee.
 
 ![4 Clusters Table](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Baltimore%20City%20Clusterings.png)
