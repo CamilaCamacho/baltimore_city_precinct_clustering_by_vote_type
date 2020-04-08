@@ -1,5 +1,4 @@
-* A repository name that is descriptive of the analysis conducted
-# Baltimore City Election Cluster Analysis
+# Baltimore City Voting Precincts Cluster Analysis
 Exploring [Maryland's Official Turnout Statistics for the 2016 General Election](https://elections.maryland.gov/elections/2016/index.html) in Maryland by Party and Precinct.
 Original dataset used can be found [here](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Official%20by%20Party%20and%20Precinct.csv).
 
@@ -31,8 +30,6 @@ These results show 4 main clusterings, each with their own "anchoring" LBE Preci
 
 This information could be incredibly useful in informing the allocation of resources to different precinct clusters based on the expected demand of voting. Clusters with higher amounts of Absentee Ballots would necessitate more staff handling the mail-in ballots. Clusters with higher amounts of in-person Early Voters can plan to accomodate larger crowds during early voting period and to have enough volunteers on staff during those times. Clusters with higher amounts of in-person Election Day Polling can make sure to prepare for a large crowds on election day with number of voting booths and and volunteers on-staff. 
 Being able to adequately prepare for different voting demands can help accelerate long lines and reduce wait-times for people trying to vote. It can also help properly prepare volunteers in the vote counting process, whether it's mailed in or done in person and fed to a [ballot scanner](https://elections.maryland.gov/voting_system/learn_about_the_new_voting_system.html).
-
-
 
 
 --- 
