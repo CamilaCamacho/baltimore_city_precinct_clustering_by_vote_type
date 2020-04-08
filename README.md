@@ -1,11 +1,10 @@
 * A repository name that is descriptive of the analysis conducted
-# Maryland Election Cluster Analysis
+# Baltimore City Election Cluster Analysis
 Exploring [Maryland's Official Turnout Statistics for the 2016 General Election](https://elections.maryland.gov/elections/2016/index.html) in Maryland by Party and Precinct.
 
 Original dataset used can be found [here](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Official%20by%20Party%20and%20Precinct.csv).
 
-### Maryland 2016 Election Data: How are Maryland voting precincts grouped based on how they vote?
-This information could be helpful in allocating resources to different precinct clusters based on the expected demand of mail-in Absentee Ballots and in-person ballots done during Early Voting or during election day Polling.
+### Maryland 2016 Election Data: How are Baltimore City voting precincts grouped based on how they vote?
 
 #### Metrics
 How/When Maryland citizens voted in 2016 Election:
@@ -15,14 +14,23 @@ How/When Maryland citizens voted in 2016 Election:
 * **Provisional**: Ballot where vote has questionable eligibility that must be resolved before vote can count [(more info)](https://en.wikipedia.org/wiki/Provisional_ballot)
 Because Provisional votes can be absentee or in-person ballots, they will not be counted in this analysis of how different Maryland voting precincts are grouped based on the types of voting that occurs. 
 
-## Data Analysis & Visualization
+## Data Analysis & Interpretation
+To group Baltimore City precincts based on how people at those precincts voted in the 2016 General Election, we run a clustering analysis on those precincts for the three main types of voting: Election Day Polls, Early Voting, and Absentee.
+Since the number of eligible voters varies greatly between precincts, the number of eligible votes a precinct could have also varies. For this reason, we standardize the vote type data to be on the same scale in order for us to adequately compare their z-scores to one another and cluster accordingly.
+
+![4 Clusters](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Baltimore%20City%20Clusterings.png)
+
+These results show 4 main clusterings, each with their own "anchoring" precinct. All precints in a certain cluster should be similar to its "anchor" precinct in types of votes. 
+* **Cluster 1:** The Baltimore City-028-015 cluster consists of many Early Voters, and a slighly above average amount of Absentee Voters and Election Day Voters.
+* **Cluster 2:** The Baltimore City-027-042 cluster consists of a large amount of Absentee Voters, many Election Day Voters, and an average amount of Early Voters. 
+* **Cluster 3:** The Baltimore City-020-002 cluster consists of a slighly below average amount Early Voters and Absentee Voters, and fewer Election Day Voters. 
+* **Cluster 4:** The Baltimore City-019-002 cluster consists of an average amount of Election Day Voters and Early Voters, and a slightly less than average amount Absentee Voters.
+
+This information could be incredibly useful in informing the allocation of resources to different precinct clusters based on the expected demand of voting. Clusters with higher amounts of Absentee Ballots would necessitate more staff handling the mail-in ballots. Clusters with higher amounts of in-person Early Voters can plan to accomodate larger crowds during early voting period and to have enough volunteers on staff during those times. Clusters with higher amounts of in-person Election Day Polling can make sure to prepare for a large crowds on election day with number of voting booths and and volunteers on-staff. 
+Being able to adequately prepare for different voting demands can help accelerate long lines and reduce wait-times for people trying to vote. It can also help properly prepare volunteers in the vote counting process, whether it's mailed in or done in person and fed to a [ballot scanner](https://elections.maryland.gov/voting_system/learn_about_the_new_voting_system.html).
 
 
-## Data Interpretation & Findings 
-* README that summarizes findings (less than 250 words), outlines data analytics process, includes at least one data visualization, and provides links to outside sources
-* What do your findings mean and why might this be important for an organization relevant to this datasource? Highlight the characteristics of each cluster, how this information should be used in practice, and what additional data might be useful for further analysis.
-* Excel Data Visualization
-Create at least one visualization that shows the groupings based on your cluster analysis. This should show either the groupings in your cluster analysis (the list of data for each cluster) or the characteristics of the cluster nodes.
+
 
 --- 
 ## Step-by-Step Instructions for Excel Data Analysis
@@ -41,6 +49,7 @@ Create at least one visualization that shows the groupings based on your cluster
   * _Function_ should be *Sum* since we want the turnout data for each party to be added together. 
   * Select _Reference_ as the range containing the _LBE Precinct_ as the left-most column and containing the rest of the data to the right. 
   * Add this range as under *All references* and under *Use labels in* check *Left column*, then press *Okay*. 
+* (If you want to focus on Baltimore City precincts, delete precincts from other counties.)
 * Create _LBE Precinct #_ column at the very left that numbers all the precincts. 
 * Name this whole data range as *precinct_dataset*
 2. Preparing for Cluster Analysis:
