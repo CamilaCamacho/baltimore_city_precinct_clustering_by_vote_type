@@ -1,26 +1,29 @@
 * A repository name that is descriptive of the analysis conducted
 # Baltimore City Election Cluster Analysis
 Exploring [Maryland's Official Turnout Statistics for the 2016 General Election](https://elections.maryland.gov/elections/2016/index.html) in Maryland by Party and Precinct.
-
 Original dataset used can be found [here](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Official%20by%20Party%20and%20Precinct.csv).
 
 ### Maryland 2016 Election Data: How are Baltimore City voting precincts grouped based on how they vote?
 
-#### Metrics
-How/When Maryland citizens voted in 2016 Election:
+#### Metrics: How Maryland citizens vote
 * **Polls**: November 8, 2016 (7am-8pm)
 * **Early Voting**: October 27, 2016 - November 3, 2016 (8am-8pm)
 * **Absentee**: Absentee Ballot requested by mail or digitally before November 01, 2016. Sent in before 
-* **Provisional**: Ballot where vote has questionable eligibility that must be resolved before vote can count [(more info)](https://en.wikipedia.org/wiki/Provisional_ballot)
-Because Provisional votes can be absentee or in-person ballots, they will not be counted in this analysis of how different Maryland voting precincts are grouped based on the types of voting that occurs. 
+* **Provisional**: Ballot where vote has questionable eligibility that must be resolved before vote can count 
 
-## Data Analysis & Interpretation
-To group Baltimore City precincts based on how people at those precincts voted in the 2016 General Election, we run a clustering analysis on those precincts for the three main types of voting: Election Day Polls, Early Voting, and Absentee.
+Because Provisional votes can be absentee or in-person ballots, they will not be counted in this analysis of how different Maryland voting precincts are grouped based on the types of voting that occurs. [(more info)](https://en.wikipedia.org/wiki/Provisional_ballot)
+
 Since the number of eligible voters varies greatly between precincts, the number of eligible votes a precinct could have also varies. For this reason, we standardize the vote type data to be on the same scale in order for us to adequately compare their z-scores to one another and cluster accordingly.
 
-![4 Clusters](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Baltimore%20City%20Clusterings.png)
+![Different kinds of Voting for Precinct](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Clustering%20Scatter%20Plot.png)
 
-These results show 4 main clusterings, each with their own "anchoring" precinct. All precints in a certain cluster should be similar to its "anchor" precinct in types of votes. 
+## Data Analysis & Interpretation
+
+To group Baltimore City precincts based on how people at those precincts voted in the 2016 General Election, we run a clustering analysis on those precincts for the three main types of voting: Election Day Polls, Early Voting, and Absentee.
+
+![4 Clusters Table](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Baltimore%20City%20Clusterings.png)
+
+These results show 4 main clusterings, each with their own "anchoring" LBE Precinct. All precints in a certain cluster should be similar to its "anchor" precinct in types of votes. 
 * **Cluster 1:** The Baltimore City-028-015 cluster consists of many Early Voters, and a slighly above average amount of Absentee Voters and Election Day Voters.
 * **Cluster 2:** The Baltimore City-027-042 cluster consists of a large amount of Absentee Voters, many Election Day Voters, and an average amount of Early Voters. 
 * **Cluster 3:** The Baltimore City-020-002 cluster consists of a slighly below average amount Early Voters and Absentee Voters, and fewer Election Day Voters. 
