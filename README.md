@@ -5,22 +5,18 @@ Exploring [Maryland's Official Turnout Statistics for the 2016 General Election]
 Original dataset used can be found [here](https://github.com/CamilaCamacho/baltimore_election_cluster_analysis/blob/master/Official%20by%20Party%20and%20Precinct.csv).
 
 ### Maryland 2016 Election Data: How are Maryland voting precincts grouped based on how they vote?
-This information could be helpful in allocating resources to different precinct clusters based on the expected demand.
+This information could be helpful in allocating resources to different precinct clusters based on the expected demand of mail-in Absentee Ballots and in-person ballots done during Early Voting or during election day Polling.
 
 #### Metrics
-How/When Maryland citizens vote:
+How/When Maryland citizens voted in 2016 Election:
 * **Polls**: November 8, 2016 (7am-8pm)
 * **Early Voting**: October 27, 2016 - November 3, 2016 (8am-8pm)
 * **Absentee**: Absentee Ballot requested by mail or digitally before November 01, 2016. Sent in before 
 * **Provisional**: Ballot where vote has questionable eligibility that must be resolved before vote can count [(more info)](https://en.wikipedia.org/wiki/Provisional_ballot)
+Because Provisional votes can be absentee or in-person ballots, they will not be counted in this analysis of how different Maryland voting precincts are grouped based on the types of voting that occurs. 
 
 ## Data Analysis & Visualization
-Perform calculations and model-building to answer the data-related questions
-Relate the data findings back to your initial question and outline what your cluster model tells us about the related organization
 
-[] Analyzed Excel documents with Excel formulas and data visualizations
-* Excel Data Analysis
-Use Excel Solver to perform a cluster analysis for an organization listed in the project outline. Calculate z-scores, define clusters, and identify which data points are categorized in each cluster.
 
 ## Data Interpretation & Findings 
 * README that summarizes findings (less than 250 words), outlines data analytics process, includes at least one data visualization, and provides links to outside sources
